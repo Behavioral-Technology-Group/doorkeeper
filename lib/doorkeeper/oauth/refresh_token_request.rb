@@ -32,7 +32,8 @@ module Doorkeeper
       attr_reader :refresh_token_parameter
 
       def before_successful_response
-        refresh_token.revoke
+        # Disabling refresh token revoke allows services like IFTTT to use them repeatedly.
+        # refresh_token.revoke
         create_access_token
       end
 
